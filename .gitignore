@@ -1,0 +1,25 @@
+## auto environment files
+.env
+.out
+
+## python version file
+.python-version
+
+## virtualenv
+venv/
+
+## ide settings
+.idea
+
+## coverage file
+.coverage
+
+## python dist files
+build/
+dist/
+**.egg-info
+
+## files
+OHA/response.json
+response.json
+
