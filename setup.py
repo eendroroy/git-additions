@@ -10,11 +10,11 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 
 def find_packages(*args, **kwargs):
-    return ['git-reports']
+    return ['git_reports']
 
 setup(
     name='git-reports',
-    version='0.1.2',
+    version='0.0.1',
     description='A command line tool to generate various git reports.',
     long_description=long_description,
     url='https://github.com/eendroroy/git-reports',
@@ -33,7 +33,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'report=git-reports:main',
+            'git_report=git_reports:main',
         ],
     },
 )
