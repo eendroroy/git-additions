@@ -1,0 +1,5 @@
+[run]
+source = ./spikes
+omit = ./spikes/__init__.py
+       ./spikes/commandline.py
+       ./venv/*
