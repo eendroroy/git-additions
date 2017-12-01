@@ -2,7 +2,6 @@ from os import path
 from codecs import open
 from setuptools import setup
 
-
 here = path.abspath(path.dirname(__file__))
 
 with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
@@ -10,12 +9,18 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 
 def find_packages(*args, **kwargs):
-    return ['git_reports']
+    return [
+        'git_reports',
+        'git_reports.reports',
+        'git_reports.reports.log',
+        'git_reports.reports.stats'
+    ]
+
 
 setup(
     name='git-reports',
-    version='0.0.1',
-    description='A command line tool to generate various git reports.',
+    version='0.0.2',
+    description='A command line tool to generate various reports from git repository.',
     long_description=long_description,
     url='https://github.com/eendroroy/git-reports',
     author='indrajit',
