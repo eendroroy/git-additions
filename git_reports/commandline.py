@@ -4,6 +4,7 @@
 import sys
 
 from git_reports.reports.log.log import Log
+from git_reports.reports.stats.stats import Stats
 
 
 class Cli(object):
@@ -12,6 +13,8 @@ class Cli(object):
         report_name = sys.argv[1]
         if report_name == 'log':
             Log().run()
+        if report_name == 'stats':
+            Stats().run()
         try:
             sys.exit(0)
         except KeyboardInterrupt:
