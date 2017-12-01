@@ -1,3 +1,5 @@
+from git_reports.commandline import Cli
+
+
 def main():
-    print("It's a dummy.")
-    print("Wait for v1.")
+    Cli.run()
