@@ -1,5 +1,7 @@
 from os import path
 from codecs import open
+
+import subprocess
 from setuptools import setup
 
 here = path.abspath(path.dirname(__file__))
@@ -17,9 +19,14 @@ def find_packages(*args, **kwargs):
     ]
 
 
+def version():
+    __version = '0.0.3'
+    __build = subprocess.check_output('git describe --tags --always HEAD'.split()).decode().strip()
+    return '%s-git-%s' % (__version, __build)
+
 setup(
     name='git-reports',
-    version='0.0.3',
+    version=version(),
     description='A command line tool to generate various reports from git repository.',
     long_description=long_description,
     url='https://github.com/eendroroy/git-reports',
