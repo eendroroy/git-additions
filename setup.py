@@ -19,7 +19,7 @@ def find_packages(*args, **kwargs):
 
 setup(
     name='git-reports',
-    version='0.0.2',
+    version='0.0.3',
     description='A command line tool to generate various reports from git repository.',
     long_description=long_description,
     url='https://github.com/eendroroy/git-reports',
