@@ -48,7 +48,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'git_report=git_reports:main',
+            'git-report=git_reports:main',
         ],
     },
 )
