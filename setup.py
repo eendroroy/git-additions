@@ -23,6 +23,7 @@ def find_packages(*args, **kwargs):
     return [
         'git_reports',
         'git_reports.reports',
+        'git_reports.reports.exporter',
         'git_reports.reports.log',
         'git_reports.reports.stats'
     ]
