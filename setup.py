@@ -19,22 +19,6 @@ def long_description():
     return long_desc
 
 
-def find_packages(*args, **kwargs):
-    return [
-        'git_reports',
-        'git_reports.reports',
-        'git_reports.reports.exporter',
-        'git_reports.reports.log',
-        'git_reports.reports.stats'
-    ]
-
-
-def install_requires():
-    return [
-        'pygit2'
-    ]
-
-
 def version():
     __version = '0.0.3'
     if path.exists('.git'):
@@ -47,8 +31,6 @@ def version():
 setup(
     version=version(),
     long_description=long_description(),
-    install_requires=install_requires(),
-    packages=find_packages(),
     entry_points={
         'console_scripts': [
             'git-report=git_reports:main',
