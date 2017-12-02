@@ -14,10 +14,27 @@
 
 ## Reports
 
+**Usage**
+
+```
+Usage: git report [options]
+
+Options:
+  -h, --help            show this help message and exit
+  -r REPORT, --report=REPORT
+                        name of the report
+  -o FILE, --out-file=FILE
+                        write report to FILE
+  -a AUTHOR, --author=AUTHOR
+                        filter by author name
+  -e EMAIL, --email=EMAIL
+                        filter by author email
+```
+
 **Log**
 
 ```
-$ git report log [-o report.csv]
+$ git report log [-o report.csv] [-a indrajit] [-e eendroroy@gmail.com]
 ```
 
 ```
