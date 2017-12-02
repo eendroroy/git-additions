@@ -33,6 +33,8 @@ class Log(object):
             self.lines.append(line)
 
         if self.export:
+            headers = ['Author', 'Time', 'Message', 'Duration']
+            self.exportet.set_lines([headers] + self.lines)
             self.exportet.write_content(self.output)
         else:
             PrintLog(self.lines).run()

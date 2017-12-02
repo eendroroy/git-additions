@@ -11,6 +11,9 @@ class CSVExporter(object):
     def add_line(self, line):
         self.lines.append(line)
 
+    def set_lines(self, lines):
+        self.lines = lines
+
     def write_content(self, file_path):
         if not file_path.startswith('/'):
             file_path = '%s/%s' % (os.getcwd(), file_path)
