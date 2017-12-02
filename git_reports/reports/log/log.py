@@ -9,10 +9,12 @@ from git_reports.reports.log.print_log import PrintLog
 
 class Log(object):
 
-    def __init__(self, export=False, output=None):
+    def __init__(self, author=None, email=None, export=False, output=None):
         self.lines = []
         self.export = export
         self.output = output
+        self.author = author
+        self.email = email
         if export:
             self.exportet = CSVExporter()
 
@@ -23,7 +25,11 @@ class Log(object):
 
         repo = Repository('%s/.git' % os.getcwd())
         for commit in repo.walk(repo.head.target, GIT_SORT_TOPOLOGICAL | GIT_SORT_REVERSE):
-            line = [commit.author.name, commit_date(commit), commit.message.strip()]
+            if self.author is not None and commit.author.name != self.author:
+                continue
+            if self.email is not None and commit.author.email != self.email:
+                continue
+            line = [commit.author.name, commit.author.email, commit_date(commit), commit.message.strip()]
             if last_commit is not None:
                 dur = duration(last_commit, commit)
                 line.append('%d %d:%d:%d' % dur)
@@ -33,7 +39,7 @@ class Log(object):
             self.lines.append(line)
 
         if self.export:
-            headers = ['Author', 'Time', 'Message', 'Duration']
+            headers = ['Author', 'Email', 'Time', 'Message', 'Duration']
             self.exportet.set_lines([headers] + self.lines)
             self.exportet.write_content(self.output)
         else:
