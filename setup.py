@@ -4,6 +4,8 @@ from codecs import open
 import subprocess
 
 import sys
+
+import time
 from setuptools import setup
 
 if sys.version_info[:2] < (3, 0):
@@ -38,7 +40,7 @@ def version():
         __build = subprocess.check_output('git rev-list HEAD --count'.split()).decode().strip()
     else:
         __build = 'b'
-    return '%s.%s' % (__version, __build)
+    return '%s.%s.%s' % (__version, __build, int(time.mktime(time.gmtime())))
 
 
 setup(
