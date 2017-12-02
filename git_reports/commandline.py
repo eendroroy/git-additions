@@ -2,17 +2,28 @@
 # -*- coding: utf-8 -*-
 
 import sys
+from optparse import OptionParser
 
 from git_reports.reports.log.log import Log
 from git_reports.reports.stats.stats import Stats
 
 
 class Cli(object):
-    @staticmethod
-    def run():
-        report_name = sys.argv[1]
+
+    def __init__(self):
+        self.parser = OptionParser()
+        self.parser.add_option(
+            "-o", "--out-file", dest="output", help="write report to FILE", metavar="FILE"
+        )
+
+    def run(self):
+        (options, args) = self.parser.parse_args()
+        report_name = args[0]
         if report_name == 'log':
-            Log().run()
+            if options.output is not None:
+                Log(export=True, output=options.output).run()
+            else:
+                Log().run()
         if report_name == 'stats':
             Stats().run()
         try:
