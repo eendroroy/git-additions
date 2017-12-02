@@ -17,7 +17,7 @@
 **Log**
 
 ```
-$ git report log
+$ git report log [-o report.csv]
 ```
 
 ```
