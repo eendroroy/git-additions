@@ -1,9 +1,7 @@
 git-reports
 ===========
 
-|Contributors| |GitHub last commit (branch)| |license|
-
-|GitHub issues| |GitHub closed issues| |GitHub pull requests| |GitHub closed pull requests|
+|Contributors| |GitHub last commit (branch)| |license| |GitHub issues| |GitHub closed issues| |GitHub pull requests| |GitHub closed pull requests|
 
 Reports
 -------
