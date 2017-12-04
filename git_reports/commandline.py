@@ -13,9 +13,6 @@ class Cli(object):
     def __init__(self):
         self.parser = OptionParser()
         self.parser.add_option(
-            "-r", "--report", dest="report", help="name of the report", metavar="REPORT"
-        )
-        self.parser.add_option(
             "-o", "--out-file", dest="output", help="write report to FILE", metavar="FILE"
         )
         self.parser.add_option(
@@ -27,15 +24,20 @@ class Cli(object):
 
     def run(self):
         (options, args) = self.parser.parse_args()
-        if options.report == 'log':
+        if len(args) != 1:
+            self.parser.error("wrong number of arguments")
+        if args[0] == 'log':
             author = options.author
             email = options.email
             if options.output is not None:
                 Log(author, email, True, options.output).run()
             else:
                 Log(author, email).run()
-        if options.report == 'stats':
+        if args[0] == 'stats':
             Stats().run()
+        else:
+            print('Unknown report "%s"' % args[0])
+            exit(1)
         try:
             sys.exit(0)
         except KeyboardInterrupt:
