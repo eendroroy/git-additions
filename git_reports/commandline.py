@@ -33,7 +33,7 @@ class Cli(object):
                 Log(author, email, True, options.output).run()
             else:
                 Log(author, email).run()
-        if args[0] == 'stats':
+        elif args[0] == 'stats':
             Stats().run()
         else:
             print('Unknown report "%s"' % args[0])
