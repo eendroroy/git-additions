@@ -14,8 +14,6 @@ Reports
 
     Options:
       -h, --help            show this help message and exit
-      -r REPORT, --report=REPORT
-                            name of the report
       -o FILE, --out-file=FILE
                             write report to FILE
       -a AUTHOR, --author=AUTHOR
