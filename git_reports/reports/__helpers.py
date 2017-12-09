@@ -15,3 +15,27 @@ def duration(commit1, commit2):
 
 def commit_date(commit):
     return time.ctime(commit.commit_time)
+
+
+def normalize_duration(days, hours, minutes, seconds, total):
+    minutes += int(seconds / 60)
+    seconds = int(seconds % 60)
+
+    hours += int(minutes / 60)
+    minutes = int(minutes % 60)
+
+    days += int(hours / 24)
+    hours = int(hours % 24)
+
+    if total == 'seconds':
+        total_duration = (days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60) + seconds
+    elif total == 'minutes':
+        total_duration = (days * 24 * 60) + (hours * 60) + minutes + (seconds / 60)
+    elif total == 'hours':
+        total_duration = (days * 24) + hours + (minutes / 60) + (seconds / (60 * 60))
+    elif total == 'days':
+        total_duration = days + (hours / 24) + (minutes / (24 * 60)) + (seconds / (24 * 60 * 60))
+    else:
+        total_duration = None
+
+    return days, hours, minutes, seconds, total_duration

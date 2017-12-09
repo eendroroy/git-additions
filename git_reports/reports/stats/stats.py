@@ -3,7 +3,7 @@ import time
 import os
 from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
 
-from git_reports.reports.__helpers import duration
+from git_reports.reports.__helpers import duration, normalize_duration
 
 
 class Stats(object):
@@ -32,16 +32,9 @@ class Stats(object):
                 first_commit = commit
             last_commit = commit
 
-        minutes += int(seconds / 60)
-        seconds = int(seconds % 60)
-
-        hours += int(minutes / 60)
-        minutes = int(minutes % 60)
-
-        days += int(hours / 24)
-        hours = int(hours % 24)
-
-        total_hours = (days * 24) + hours + (minutes / 60)
+        days, hours, minutes, seconds, total_hours = normalize_duration(
+            days, hours, minutes, seconds, total='hours'
+        )
 
         print('     D HH:MM:SS')
         print('%6d %2d:%d:%d' % (days, hours, minutes, seconds))
