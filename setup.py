@@ -25,7 +25,8 @@ def find_packages(*args, **kwargs):
         'git_reports.reports',
         'git_reports.reports.exporter',
         'git_reports.reports.log',
-        'git_reports.reports.stats'
+        'git_reports.reports.stats',
+        'git_reports.reports.users',
     ]
 
 
