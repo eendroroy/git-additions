@@ -29,10 +29,13 @@ class Log(object):
                 continue
             if self.email is not None and commit.author.email != self.email:
                 continue
-            line = [commit.author.name, commit.author.email, commit_date(commit), commit.message.strip()]
+            line = [commit_date(commit), commit.author.name, commit.author.email]
             if last_commit is not None:
                 dur = duration(last_commit, commit)
-                line.append('%d %d:%d:%d' % dur)
+                line.append('%d %02d:%02d:%02d' % dur)
+            else:
+                line.append('0 00:00:00')
+            line.append(commit.message.strip())
             if first_commit is None:
                 first_commit = commit
             last_commit = commit

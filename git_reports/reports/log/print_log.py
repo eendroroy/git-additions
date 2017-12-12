@@ -1,3 +1,6 @@
+from git_reports.reports.log.t_colors import TColors
+
+
 class PrintLog(object):
 
     def __init__(self, lines):
@@ -5,4 +8,8 @@ class PrintLog(object):
 
     def run(self):
         for line in self.lines:
-            print(' ==> '.join(line))
+            colors = TColors.COLORS
+            colors.update({'line': line})
+            log_line = \
+                '{default}{line[0]} {green}{line[3]} {white}{line[1]}{yellow}[{line[2]}]  {darkgray}{line[4]}{default}'
+            print(log_line.format(**colors))
