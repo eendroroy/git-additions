@@ -41,7 +41,7 @@ def version():
         __build = subprocess.check_output('git rev-list HEAD --count'.split()).decode().strip()
     else:
         __build = 'b'
-    return '%s.%s.%s' % (__version, __build, int(time.mktime(time.gmtime())))
+    return '%s.%s' % (__version, __build)
 
 
 setup(
