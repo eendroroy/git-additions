@@ -37,7 +37,7 @@ def install_requires():
 
 
 def version():
-    __version = '0.0.3'
+    __version = '0.0.4'
     if path.exists('.git'):
         __build = subprocess.check_output('git rev-list HEAD --count'.split()).decode().strip()
     else:
