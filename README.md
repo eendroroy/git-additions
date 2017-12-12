@@ -62,6 +62,12 @@ Total Work Hours (estimated): 4.266667
 Project Duration: 1 17:49:59
 ```
 
+**Users**
+
+```
+$ git report users
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at [git-reports](https://github.com/eendroroy/git-reports) repository.

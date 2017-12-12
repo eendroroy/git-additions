@@ -54,6 +54,12 @@ Reports
     Total Work Hours (estimated): 4.266667
     Project Duration: 1 17:49:59
 
+**Users**
+
+::
+
+    $ git report users
+
 Contributing
 ------------
 
