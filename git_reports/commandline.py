@@ -6,6 +6,7 @@ from optparse import OptionParser
 
 from git_reports.reports.log.log import Log
 from git_reports.reports.stats.stats import Stats
+from git_reports.reports.users.users import Users
 
 
 class Cli(object):
@@ -35,6 +36,8 @@ class Cli(object):
                 Log(author, email).run()
         elif args[0] == 'stats':
             Stats().run()
+        elif args[0] == 'users':
+            Users().run()
         else:
             print('Unknown report "%s"' % args[0])
             exit(1)
