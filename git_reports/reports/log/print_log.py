@@ -11,5 +11,5 @@ class PrintLog(object):
             colors = TColors.COLORS
             colors.update({'line': line})
             log_line = \
-                '{default}{line[0]} {green}{line[3]} {white}{line[1]}{yellow}[{line[2]}]  {darkgray}{line[4]}{default}'
+                '{default}{line[0]} {green}{line[3]} {white}{line[1]}{yellow} [{line[2]}]  {darkgray}{line[4]}{default}'
             print(log_line.format(**colors))
