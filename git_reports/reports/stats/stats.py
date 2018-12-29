@@ -40,6 +40,10 @@ class Stats(object):
     def short(repo):
         previous_commit = None
         report = dict()
+        total_files_changed = 0
+        total_additions = 0
+        total_deletions = 0
+        max_author_length = 0
         for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL | pygit2.GIT_SORT_REVERSE):
             if previous_commit is not None:
                 diff = commit.tree.diff_to_tree(previous_commit.tree)
@@ -50,8 +54,15 @@ class Stats(object):
                 report[key]['files_changed'] += diff.stats.files_changed
                 report[key]['insertions'] += diff.stats.insertions
                 report[key]['deletions'] += diff.stats.deletions
+
+                total_files_changed += diff.stats.files_changed
+                total_additions += diff.stats.insertions
+                total_deletions += diff.stats.deletions
+
             previous_commit = commit
         for key in report.keys():
+            if max_author_length < len(key):
+                max_author_length = len(key)
             author = str(key).split('-')
             print(
                 '%s%s%s <%s>%s' % (Fore.YELLOW, author[0], Style.DIM, author[1], Style.NORMAL),
@@ -60,3 +71,8 @@ class Stats(object):
             print('%sf: %s' % (Fore.BLUE, report[key]['files_changed']), end='\t')
             print('%s+: %s' % (Fore.GREEN, report[key]['insertions']), end='\t')
             print('%s-: %s' % (Fore.RED, report[key]['deletions']))
+
+        print('%sTotal' % Fore.YELLOW, ' ' * (max_author_length - 5), end='\t')
+        print('%sf: %s' % (Fore.BLUE, total_files_changed), end='\t')
+        print('%s+: %s' % (Fore.GREEN, total_additions), end='\t')
+        print('%s-: %s' % (Fore.RED, total_deletions))
