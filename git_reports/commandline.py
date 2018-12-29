@@ -6,7 +6,6 @@ from optparse import OptionParser
 
 from git_reports.reports.duration.duration import Duration
 from git_reports.reports.log.log import Log
-from git_reports.reports.stats.stats import Stats
 from git_reports.reports.users.users import Users
 
 
@@ -22,9 +21,6 @@ class Cli(object):
         )
         self.parser.add_option(
             "-e", "--email", dest="email", help="filter by author email", metavar="EMAIL"
-        )
-        self.parser.add_option(
-            "-m", "--message", action="store_true", dest="message", default=False, help="show message"
         )
 
     def run(self):
