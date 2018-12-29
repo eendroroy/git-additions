@@ -21,17 +21,17 @@ def long_description():
 def find_packages(*args, **kwargs):
     return [
         'git_additions',
-        'git_additions.reports',
-        'git_additions.reports.duration',
-        'git_additions.reports.exporter',
-        'git_additions.reports.logs',
-        'git_additions.reports.stats',
-        'git_additions.reports.users',
+        'git_additions.additions',
+        'git_additions.additions.duration',
+        'git_additions.additions.exporter',
+        'git_additions.additions.logs',
+        'git_additions.additions.stats',
+        'git_additions.additions.users',
     ]
 
 
 def version():
-    __version = '0.0.4'
+    __version = '0.1.0'
     if path.exists('.git'):
         __build = subprocess.check_output('git rev-list HEAD --count'.split()).decode().strip()
     else:
@@ -48,10 +48,10 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'git-duration=git_additions.reports.duration:runner',
-            'git-logs=git_additions.reports.logs:runner',
-            'git-stats=git_additions.reports.stats:runner',
-            'git-users=git_additions.reports.users:runner',
+            'git-duration=git_additions.additions.duration:runner',
+            'git-logs=git_additions.additions.logs:runner',
+            'git-stats=git_additions.additions.stats:runner',
+            'git-users=git_additions.additions.users:runner',
         ],
     },
 )

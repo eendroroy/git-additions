@@ -1,4 +1,4 @@
-from git_additions.reports.logs.t_colors import TColors
+from git_additions.additions.logs.t_colors import TColors
 
 
 class PrintLog(object):

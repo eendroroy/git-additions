@@ -1,6 +1,6 @@
 from optparse import OptionParser
 
-from git_additions.reports.logs.logs import Logs
+from git_additions.additions.logs.logs import Logs
 
 
 def runner():

@@ -3,7 +3,7 @@ import os
 import pygit2
 from colorama import Fore, Style
 
-from git_additions.reports.__helpers import find_toplevel
+from git_additions.additions.__helpers import find_toplevel
 
 
 class Stats(object):

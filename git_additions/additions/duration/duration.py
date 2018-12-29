@@ -2,7 +2,7 @@ import os
 
 from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
 
-from git_additions.reports.__helpers import duration, normalize_duration, find_toplevel
+from git_additions.additions.__helpers import duration, normalize_duration, find_toplevel
 
 
 class Duration(object):

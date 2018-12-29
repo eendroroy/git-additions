@@ -2,9 +2,9 @@ import os
 
 from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
 
-from git_additions.reports.__helpers import duration, commit_date
-from git_additions.reports.exporter.csv_exporter import CSVExporter
-from git_additions.reports.logs.print_log import PrintLog
+from git_additions.additions.__helpers import duration, commit_date
+from git_additions.additions.exporter.csv_exporter import CSVExporter
+from git_additions.additions.logs.print_log import PrintLog
 
 
 class Logs(object):
@@ -42,7 +42,7 @@ class Logs(object):
             self.lines.append(line)
 
         if self.export:
-            headers = ['Author', 'Email', 'Time', 'Message', 'Duration']
+            headers = ['Time', 'Author', 'Email', 'Duration', 'Message']
             self.exportet.set_lines([headers] + self.lines)
             self.exportet.write_content(self.output)
         else:
