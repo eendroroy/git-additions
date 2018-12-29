@@ -1,77 +1,125 @@
-git-reports
-===========
 
-|Contributors| |GitHub last commit (branch)| |license| |GitHub issues| |GitHub closed issues| |GitHub pull requests| |GitHub closed pull requests|
+git-additions
+=============
+
+
+.. image:: https://img.shields.io/github/tag/eendroroy/git-additions.svg
+   :target: https://github.com/eendroroy/git-additions/tags
+   :alt: GitHub tag
+
+
+.. image:: https://img.shields.io/pypi/v/git-additions.svg
+   :target: https://pypi.python.org/pypi/git-additions/
+   :alt: PyPI
+
+
+.. image:: https://img.shields.io/pypi/pyversions/git-additions.svg
+   :target: https://pypi.python.org/pypi/git-additions
+   :alt: PyPI
+
+
+
+.. image:: https://img.shields.io/github/contributors/eendroroy/git-additions.svg
+   :target: https://github.com/eendroroy/git-additions/graphs/contributors
+   :alt: Contributors
+
+
+.. image:: https://img.shields.io/github/last-commit/eendroroy/git-additions/master.svg
+   :target: https://github.com/eendroroy/git-additions
+   :alt: GitHub last commit (branch)
+
+
+.. image:: https://img.shields.io/github/license/eendroroy/git-additions.svg
+   :target: https://github.com/eendroroy/git-additions/blob/master/LICENSE
+   :alt: license
+
+
+.. image:: https://img.shields.io/github/issues/eendroroy/git-additions.svg
+   :target: https://github.com/eendroroy/git-additions/issues
+   :alt: GitHub issues
+
+
+.. image:: https://img.shields.io/github/issues-closed/eendroroy/git-additions.svg
+   :target: https://github.com/eendroroy/git-additions/issues?q=is%3Aissue+is%3Aclosed
+   :alt: GitHub closed issues
+
+
+.. image:: https://img.shields.io/github/issues-pr/eendroroy/git-additions.svg
+   :target: https://github.com/eendroroy/git-additions/pulls
+   :alt: GitHub pull requests
+
+
+.. image:: https://img.shields.io/github/issues-pr-closed/eendroroy/git-additions.svg
+   :target: https://github.com/eendroroy/git-additions/pulls?q=is%3Apr+is%3Aclosed
+   :alt: GitHub closed pull requests
+
 
 Reports
 -------
 
 **Usage**
 
-::
+.. code-block:: bash
 
-    Usage: git report [options]
+   $ git duration
+        D HH:MM:SS
+        0 16:1:54
 
-    Options:
-      -h, --help            show this help message and exit
-      -o FILE, --out-file=FILE
-                            write report to FILE
-      -a AUTHOR, --author=AUTHOR
-                            filter by author name
-      -e EMAIL, --email=EMAIL
-                            filter by author email
+   Total Work Hours (estimated): 16.031667
+   Project Duration: 394  1:20:5
 
-**Log**
+.. code-block:: bash
 
-::
+   $ git logs -h
+   Usage: git-logs [options]
 
-    $ git report log [-o report.csv] [-a indrajit] [-e eendroroy@gmail.com]
+   Options:
+     -h, --help            show this help message and exit
+     -o FILE, --out-file=FILE
+                           write report to FILE
+     -a AUTHOR, --author=AUTHOR
+                           filter by author name
+     -e EMAIL, --email=EMAIL
+                           filter by author email
 
-**Stats**
+.. code-block:: bash
 
-::
+   $ git stats -h
+   Usage: git-stats [options]
 
-    $ git report stats
+   Options:
+     -h, --help     show this help message and exit
+     -m, --message  Show Commit Message
+     -s, --short    Show Short Stat
 
-**Users**
+.. code-block:: bash
 
-::
-
-    $ git report users
-
-Contributing
-------------
-
-Bug reports and pull requests are welcome on GitHub at
-`git-reports <https://github.com/eendroroy/git-reports>`__ repository.
-This project is intended to be a safe, welcoming space for
-collaboration, and contributors are expected to adhere to the
-`Contributor Covenant <http://contributor-covenant.org>`__ code of
-conduct.
+   $ git users
+   Name         Email                   Commits
+   ________     ___________________     _______
+   indrajit     eendroroy@gmail.com     54
 
 Author
 ------
 
--  **indrajit** - *Owner* - `eendroroy <https://github.com/eendroroy>`__
+
+* **indrajit** - *Owner* - `eendroroy <https://github.com/eendroroy>`_
+
+Contributing
+------------
+
+Bug additions and pull requests are welcome on GitHub at `git-additions <https://github.com/eendroroy/git-additions>`_ repository.
+This project is intended to be a safe, welcoming space for collaboration,
+and contributors are expected to adhere to the `Contributor Covenant <http://contributor-covenant.org>`_ code of conduct.
+
+
+#. Fork it ( https://github.com/eendroroy/git-additions/fork )
+#. Create your feature branch (\ ``git checkout -b my-new-feature``\ )
+#. Commit your changes (\ ``git commit -am 'Add some feature'``\ )
+#. Push to the branch (\ ``git push origin my-new-feature``\ )
+#. Create a new Pull Request
 
 License
 -------
 
-The project is available as open source under the terms of the `MIT
-License <http://opensource.org/licenses/MIT>`__.
-
-
-.. |Contributors| image:: https://img.shields.io/github/contributors/eendroroy/git-reports.svg
-   :target: https://github.com/eendroroy/git-reports/graphs/contributors
-.. |GitHub last commit (branch)| image:: https://img.shields.io/github/last-commit/eendroroy/git-reports/master.svg
-   :target: https://github.com/eendroroy/git-reports
-.. |license| image:: https://img.shields.io/github/license/eendroroy/git-reports.svg
-   :target: https://github.com/eendroroy/git-reports/blob/master/LICENSE
-.. |GitHub issues| image:: https://img.shields.io/github/issues/eendroroy/git-reports.svg
-   :target: https://github.com/eendroroy/git-reports/issues
-.. |GitHub closed issues| image:: https://img.shields.io/github/issues-closed/eendroroy/git-reports.svg
-   :target: https://github.com/eendroroy/git-reports/issues?q=is%3Aissue+is%3Aclosed
-.. |GitHub pull requests| image:: https://img.shields.io/github/issues-pr/eendroroy/git-reports.svg
-   :target: https://github.com/eendroroy/git-reports/pulls
-.. |GitHub closed pull requests| image:: https://img.shields.io/github/issues-pr-closed/eendroroy/git-reports.svg
-   :target: https://github.com/eendroroy/git-reports/pulls?q=is%3Apr+is%3Aclosed
+The project is available as open source under the terms of the `MIT License <http://opensource.org/licenses/MIT>`_.
