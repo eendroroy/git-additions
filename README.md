@@ -31,7 +31,7 @@ Options:
 
 **Log** `$ git report log [-o report.csv] [-a indrajit] [-e eendroroy@gmail.com]`
 
-**Stats** `$ git report stats`
+**Stats** `$ git report duration`
 
 **Users** `$ git report users`
 

@@ -4,8 +4,8 @@
 import sys
 from optparse import OptionParser
 
+from git_reports.reports.duration.duration import Duration
 from git_reports.reports.log.log import Log
-from git_reports.reports.stats.stats import Stats
 from git_reports.reports.users.users import Users
 
 
@@ -34,8 +34,8 @@ class Cli(object):
                 Log(author, email, True, options.output).run()
             else:
                 Log(author, email).run()
-        elif args[0] == 'stats':
-            Stats().run()
+        elif args[0] == 'duration':
+            Duration().run()
         elif args[0] == 'users':
             Users().run()
         else:

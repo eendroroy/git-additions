@@ -1,12 +1,11 @@
-import time
-
 import os
+
 from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
 
-from git_reports.reports.__helpers import duration, normalize_duration
+from git_reports.reports.__helpers import duration, normalize_duration, find_toplevel
 
 
-class Stats(object):
+class Duration(object):
 
     def __init__(self):
         pass
@@ -19,7 +18,7 @@ class Stats(object):
         minutes = 0
         seconds = 0
 
-        repo = Repository('%s/.git' % os.getcwd())
+        repo = Repository('%s/.git' % find_toplevel(os.getcwd()))
         for commit in repo.walk(repo.head.target, GIT_SORT_TOPOLOGICAL | GIT_SORT_REVERSE):
             if last_commit is not None:
                 dur = duration(last_commit, commit)

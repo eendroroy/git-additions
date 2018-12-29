@@ -1,4 +1,16 @@
+import pathlib
 import time
+
+
+def find_toplevel(path, last=None):
+    path = pathlib.Path(path).absolute()
+
+    if path == last:
+        return None
+    if (path / '.git').is_dir():
+        return path
+
+    return find_toplevel(path.parent, last=path)
 
 
 def duration(commit1, commit2):

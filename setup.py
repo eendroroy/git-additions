@@ -23,16 +23,10 @@ def find_packages(*args, **kwargs):
     return [
         'git_reports',
         'git_reports.reports',
+        'git_reports.reports.duration',
         'git_reports.reports.exporter',
         'git_reports.reports.log',
-        'git_reports.reports.stats',
         'git_reports.reports.users',
-    ]
-
-
-def install_requires():
-    return [
-        'pygit2'
     ]
 
 
@@ -48,7 +42,9 @@ def version():
 setup(
     version=version(),
     long_description=long_description(),
-    install_requires=install_requires(),
+    install_requires=[
+        'pygit2'
+    ],
     packages=find_packages(),
     entry_points={
         'console_scripts': [
