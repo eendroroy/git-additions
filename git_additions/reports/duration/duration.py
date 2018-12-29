@@ -2,15 +2,12 @@ import os
 
 from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
 
-from git_reports.reports.__helpers import duration, normalize_duration, find_toplevel
+from git_additions.reports.__helpers import duration, normalize_duration, find_toplevel
 
 
 class Duration(object):
-
-    def __init__(self):
-        pass
-
-    def run(self):
+    @staticmethod
+    def report():
         last_commit = None
         first_commit = None
         days = 0

@@ -20,13 +20,13 @@ def long_description():
 
 def find_packages(*args, **kwargs):
     return [
-        'git_reports',
-        'git_reports.reports',
-        'git_reports.reports.duration',
-        'git_reports.reports.exporter',
-        'git_reports.reports.log',
-        'git_reports.reports.stats',
-        'git_reports.reports.users',
+        'git_additions',
+        'git_additions.reports',
+        'git_additions.reports.duration',
+        'git_additions.reports.exporter',
+        'git_additions.reports.logs',
+        'git_additions.reports.stats',
+        'git_additions.reports.users',
     ]
 
 
@@ -48,8 +48,10 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'git-report=git_reports:main',
-            'git-stats=git_reports.reports.stats:runner',
+            'git-duration=git_additions.reports.duration:runner',
+            'git-logs=git_additions.reports.logs:runner',
+            'git-stats=git_additions.reports.stats:runner',
+            'git-users=git_additions.reports.users:runner',
         ],
     },
 )

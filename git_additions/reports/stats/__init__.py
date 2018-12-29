@@ -1,6 +1,6 @@
 from optparse import OptionParser
 
-from git_reports.reports.stats.stats import Stats
+from git_additions.reports.stats.stats import Stats
 
 
 def runner():

@@ -29,12 +29,6 @@ Options:
                         filter by author email
 ```
 
-**Log** `$ git report log [-o report.csv] [-a indrajit] [-e eendroroy@gmail.com]`
-
-**Stats** `$ git report duration`
-
-**Users** `$ git report users`
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at [git-reports](https://github.com/eendroroy/git-reports) repository.

@@ -1,18 +1,17 @@
 import os
 from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
 
+from git_additions.reports.__helpers import find_toplevel
+
 
 class Users(object):
-
-    def __init__(self):
-        pass
-
-    def run(self):
+    @staticmethod
+    def report():
         max_name_length = 0
         max_email_length = 0
 
         authors = dict()
-        repo = Repository('%s/.git' % os.getcwd())
+        repo = Repository('%s/.git' % find_toplevel(os.getcwd()))
         for commit in repo.walk(repo.head.target, GIT_SORT_TOPOLOGICAL | GIT_SORT_REVERSE):
             if commit.author.email not in authors.keys():
                 authors[commit.author.email] = dict()

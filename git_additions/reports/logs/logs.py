@@ -2,12 +2,12 @@ import os
 
 from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
 
-from git_reports.reports.__helpers import duration, commit_date
-from git_reports.reports.exporter.csv_exporter import CSVExporter
-from git_reports.reports.log.print_log import PrintLog
+from git_additions.reports.__helpers import duration, commit_date
+from git_additions.reports.exporter.csv_exporter import CSVExporter
+from git_additions.reports.logs.print_log import PrintLog
 
 
-class Log(object):
+class Logs(object):
 
     def __init__(self, author=None, email=None, export=False, output=None):
         self.lines = []
