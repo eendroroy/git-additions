@@ -5,6 +5,7 @@ import subprocess
 
 import sys
 
+import setuptools
 from setuptools import setup
 
 if sys.version_info[:2] < (3, 0):
@@ -16,18 +17,6 @@ def long_description():
     with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
         long_desc = f.read()
     return long_desc
-
-
-def find_packages(*args, **kwargs):
-    return [
-        'git_additions',
-        'git_additions.additions',
-        'git_additions.additions.duration',
-        'git_additions.additions.exporter',
-        'git_additions.additions.logs',
-        'git_additions.additions.stats',
-        'git_additions.additions.users',
-    ]
 
 
 def version():
@@ -45,7 +34,13 @@ setup(
     install_requires=[
         'pygit2', 'colorama'
     ],
-    packages=find_packages(),
+    packages=setuptools.find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: End Users/Desktop",
+    ],
     entry_points={
         'console_scripts': [
             'git-duration=git_additions.additions.duration:runner',
