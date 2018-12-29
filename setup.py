@@ -5,7 +5,6 @@ import subprocess
 
 import sys
 
-import time
 from setuptools import setup
 
 if sys.version_info[:2] < (3, 0):
@@ -26,6 +25,7 @@ def find_packages(*args, **kwargs):
         'git_reports.reports.duration',
         'git_reports.reports.exporter',
         'git_reports.reports.log',
+        'git_reports.reports.stats',
         'git_reports.reports.users',
     ]
 
@@ -43,12 +43,13 @@ setup(
     version=version(),
     long_description=long_description(),
     install_requires=[
-        'pygit2'
+        'pygit2', 'colorama'
     ],
     packages=find_packages(),
     entry_points={
         'console_scripts': [
             'git-report=git_reports:main',
+            'git-stats=git_reports.reports.stats:runner',
         ],
     },
 )
