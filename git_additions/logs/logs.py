@@ -1,8 +1,8 @@
 import os
 
-from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
+import pygit2
 
-from git_additions.__helpers import duration, commit_date
+from git_additions.__helpers import duration, commit_date, find_toplevel
 from git_additions.exporter.csv_exporter import CSVExporter
 from git_additions.logs.print_log import PrintLog
 
@@ -23,8 +23,8 @@ class Logs(object):
         last_commit = None
         first_commit = None
 
-        repo = Repository('%s/.git' % os.getcwd())
-        for commit in repo.walk(repo.head.target, GIT_SORT_TOPOLOGICAL | GIT_SORT_REVERSE):
+        repo = pygit2.Repository('%s/.git' % find_toplevel(os.getcwd()))
+        for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL | pygit2.GIT_SORT_REVERSE):
             if self.author is not None and commit.author.name != self.author:
                 continue
             if self.email is not None and commit.author.email != self.email:
