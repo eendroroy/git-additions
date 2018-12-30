@@ -7,7 +7,7 @@ import setuptools
 
 def long_description():
     here = path.abspath(path.dirname(__file__))
-    with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+    with open(path.join(here, 'README.md'), encoding='utf-8') as f:
         long_desc = f.read()
     return long_desc
 
@@ -18,7 +18,7 @@ def version():
         __build = subprocess.check_output('git rev-list HEAD --count'.split()).decode().strip()
     else:
         __build = 'b'
-    return '%s.%s' % (__version, __build)
+    return '%s.POST%s' % (__version, __build)
 
 
 setuptools.setup(
