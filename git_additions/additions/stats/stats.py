@@ -47,7 +47,7 @@ class Stats(object):
         total_insertions = 0
         total_deletions = 0
         max_author_length = 0
-        for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL | pygit2.GIT_SORT_REVERSE):
+        for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL):
             if previous_commit is not None:
                 diff = commit.tree.diff_to_tree(previous_commit.tree)
                 key = '%s-%s' % (commit.author.name, commit.author.email)
