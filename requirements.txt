@@ -2,3 +2,6 @@ m2r
 setuptools
 twine
 wheel
+nose
+codecov
+coverage
