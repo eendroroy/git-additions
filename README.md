@@ -12,9 +12,7 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/eendroroy/git-additions.svg)](https://github.com/eendroroy/git-additions/pulls)
 [![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/eendroroy/git-additions.svg)](https://github.com/eendroroy/git-additions/pulls?q=is%3Apr+is%3Aclosed)
 
-## Reports
-
-**Usage**
+## Usage
 
 ```bash
 $ git duration

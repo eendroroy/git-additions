@@ -54,10 +54,8 @@ git-additions
    :alt: GitHub closed pull requests
 
 
-Reports
--------
-
-**Usage**
+Usage
+-----
 
 .. code-block:: bash
 
