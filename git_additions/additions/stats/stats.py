@@ -85,6 +85,3 @@ class Stats(object):
         print('%sf: %s' % (Fore.BLUE, total_files_changed), end='  ')
         print('%s+: %s' % (Fore.GREEN, total_insertions), end='  ')
         print('%s-: %s' % (Fore.RED, total_deletions))
-
-
-Stats(None).short(pygit2.Repository('/Users/indrajit/_WORKSPACE/ROBI/myrobi/.git'))
