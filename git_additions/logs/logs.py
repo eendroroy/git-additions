@@ -9,25 +9,22 @@ from git_additions.logs.print_log import PrintLog
 
 class Logs(object):
 
-    def __init__(self, author=None, email=None, export=False, output=None):
+    def __init__(self, options):
         self.lines = []
-        self.export = export
-        self.output = output
-        self.author = author
-        self.email = email
-        if export:
-            self.exportet = CSVExporter()
+        self.__options = options
+        if options.output is not None:
+            self.exporter = CSVExporter()
 
-    def run(self):
+    def report(self):
 
         last_commit = None
         first_commit = None
 
         repo = pygit2.Repository('%s/.git' % find_toplevel(os.getcwd()))
         for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL | pygit2.GIT_SORT_REVERSE):
-            if self.author is not None and commit.author.name != self.author:
+            if self.__options.author is not None and commit.author.name != self.__options.author:
                 continue
-            if self.email is not None and commit.author.email != self.email:
+            if self.__options.email is not None and commit.author.email != self.__options.email:
                 continue
             line = [commit_date(commit), commit.author.name, commit.author.email]
             if last_commit is not None:
@@ -41,9 +38,9 @@ class Logs(object):
             last_commit = commit
             self.lines.append(line)
 
-        if self.export:
+        if self.__options.output is not None:
             headers = ['Time', 'Author', 'Email', 'Duration', 'Message']
-            self.exportet.set_lines([headers] + self.lines)
-            self.exportet.write_content(self.output)
+            self.exporter.set_lines([headers] + self.lines)
+            self.exporter.write_content(self.__options.output)
         else:
             PrintLog(self.lines).run()

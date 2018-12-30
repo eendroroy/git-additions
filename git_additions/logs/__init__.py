@@ -16,7 +16,4 @@ def runner():
     )
     (options, args) = parser.parse_args()
 
-    if options.output is not None:
-        Logs(options.author, options.email, True, options.output).run()
-    else:
-        Logs(options.author, options.email).run()
+    Logs(options).report()
