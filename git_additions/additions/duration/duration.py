@@ -1,6 +1,8 @@
+from __future__ import print_function
+
 import os
 
-from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
+import pygit2
 
 from git_additions.additions.__helpers import duration, normalize_duration, find_toplevel
 
@@ -15,8 +17,8 @@ class Duration(object):
         minutes = 0
         seconds = 0
 
-        repo = Repository('%s/.git' % find_toplevel(os.getcwd()))
-        for commit in repo.walk(repo.head.target, GIT_SORT_TOPOLOGICAL | GIT_SORT_REVERSE):
+        repo = pygit2.Repository('%s/.git' % find_toplevel(os.getcwd()))
+        for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL | pygit2.GIT_SORT_REVERSE):
             if last_commit is not None:
                 dur = duration(last_commit, commit)
                 if dur[0] < 1 and dur[1] < 8:

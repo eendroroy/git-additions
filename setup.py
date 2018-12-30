@@ -1,15 +1,9 @@
-from os import path
-from codecs import open
-
 import subprocess
-
-import sys
+from codecs import open
+from os import path
 
 import setuptools
 from setuptools import setup
-
-if sys.version_info[:2] < (3, 0):
-    raise RuntimeError("Python version 3 required.")
 
 
 def long_description():
@@ -32,10 +26,11 @@ setup(
     version=version(),
     long_description=long_description(),
     install_requires=[
-        'pygit2', 'colorama'
+        'pygit2', 'colorama', 'pathlib'
     ],
     packages=setuptools.find_packages(),
     classifiers=[
+        "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Development Status :: 4 - Beta",

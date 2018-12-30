@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from git_additions.additions.logs.t_colors import TColors
 
 

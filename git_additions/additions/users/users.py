@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import os
 from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
 
