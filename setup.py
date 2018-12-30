@@ -18,7 +18,7 @@ def version():
         __build = subprocess.check_output('git rev-list HEAD --count'.split()).decode().strip()
     else:
         __build = 'b'
-    return '%s.POST%s' % (__version, __build)
+    return '%s.%s' % (__version, __build)
 
 
 setuptools.setup(
