@@ -21,23 +21,27 @@ class Stats(object):
             self.stats(repo)
 
     def stats(self, repo):
-        previous_commit = None
-        for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL):
-            if previous_commit is not None:
-                diff = commit.tree.diff_to_tree(previous_commit.tree)
-                print('#%s%s' % (Fore.CYAN, commit.short_id), end=' ')
-                print('%s%s' % (Fore.LIGHTMAGENTA_EX, commit_date(commit)), end=' ')
-                print(
-                    '%s%s%s <%s>%s' % (Fore.YELLOW, commit.author.name, Style.DIM, commit.author.email, Style.NORMAL),
-                    end=' '
-                )
-                print('%sf: %s' % (Fore.BLUE, diff.stats.files_changed), end=' ')
-                print('%s+: %s' % (Fore.GREEN, diff.stats.insertions,), end=' ')
-                print('%s-: %s' % (Fore.RED, diff.stats.deletions,), end=' ')
-                if self.__options.message:
-                    print('%s%s' % (Fore.LIGHTBLUE_EX, str(commit.message).split('\n')[0].strip()), end=' ')
-                print(Style.RESET_ALL)
-            previous_commit = commit
+        try:
+            previous_commit = None
+            for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL):
+                if previous_commit is not None:
+                    diff = commit.tree.diff_to_tree(previous_commit.tree)
+                    print('#%s%s' % (Fore.CYAN, commit.short_id), end=' ')
+                    print('%s%s' % (Fore.LIGHTMAGENTA_EX, commit_date(commit)), end=' ')
+                    print(
+                        '%s%s%s <%s>%s' % (
+                            Fore.YELLOW, commit.author.name, Style.DIM, commit.author.email, Style.NORMAL),
+                        end=' '
+                    )
+                    print('%sf: %s' % (Fore.BLUE, diff.stats.files_changed), end=' ')
+                    print('%s+: %s' % (Fore.GREEN, diff.stats.insertions,), end=' ')
+                    print('%s-: %s' % (Fore.RED, diff.stats.deletions,), end=' ')
+                    if self.__options.message:
+                        print('%s%s' % (Fore.LIGHTBLUE_EX, str(commit.message).split('\n')[0].strip()), end=' ')
+                    print(Style.RESET_ALL)
+                previous_commit = commit
+        except IOError:
+            exit(0)
 
     @staticmethod
     def short(repo):
