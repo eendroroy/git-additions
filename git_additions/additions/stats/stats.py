@@ -43,13 +43,15 @@ class Stats(object):
         previous_commit = None
         report = dict()
         total_files_changed = 0
-        total_additions = 0
+        total_insertions = 0
         total_deletions = 0
         max_author_length = 0
         for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL | pygit2.GIT_SORT_REVERSE):
             if previous_commit is not None:
                 diff = commit.tree.diff_to_tree(previous_commit.tree)
                 key = '%s-%s' % (commit.author.name, commit.author.email)
+                if max_author_length < len(key):
+                    max_author_length = len(key)
                 if key not in report.keys():
                     report[key] = {'files_changed': 0, 'insertions': 0, 'deletions': 0}
 
@@ -58,23 +60,31 @@ class Stats(object):
                 report[key]['deletions'] += diff.stats.deletions
 
                 total_files_changed += diff.stats.files_changed
-                total_additions += diff.stats.insertions
+                total_insertions += diff.stats.insertions
                 total_deletions += diff.stats.deletions
 
             previous_commit = commit
         for key in report.keys():
-            if max_author_length < len(key):
-                max_author_length = len(key)
             author = str(key).split('-')
             print(
                 '%s%s%s <%s>%s' % (Fore.YELLOW, author[0], Style.DIM, author[1], Style.NORMAL),
-                end='\t'
+                ' ' * (max_author_length - len(key)),
+                end=' '
             )
-            print('%sf: %s' % (Fore.BLUE, report[key]['files_changed']), end='\t')
-            print('%s+: %s' % (Fore.GREEN, report[key]['insertions']), end='\t')
+            print(
+                '%sf: %s' % (Fore.BLUE, report[key]['files_changed']),
+                ' ' * (len(str(total_files_changed)) - len(str(report[key]['files_changed']))), end=' '
+            )
+            print(
+                '%s+: %s' % (Fore.GREEN, report[key]['insertions']),
+                ' ' * (len(str(total_insertions)) - len(str(report[key]['insertions']))), end=' '
+            )
             print('%s-: %s' % (Fore.RED, report[key]['deletions']))
 
-        print('%sTotal' % Fore.YELLOW, ' ' * (max_author_length - 5), end='\t')
-        print('%sf: %s' % (Fore.BLUE, total_files_changed), end='\t')
-        print('%s+: %s' % (Fore.GREEN, total_additions), end='\t')
+        print('%sTotal' % Fore.YELLOW, ' ' * (max_author_length - 3), end=' ')
+        print('%sf: %s' % (Fore.BLUE, total_files_changed), end='  ')
+        print('%s+: %s' % (Fore.GREEN, total_insertions), end='  ')
         print('%s-: %s' % (Fore.RED, total_deletions))
+
+
+Stats(None).short(pygit2.Repository('/Users/indrajit/_WORKSPACE/ROBI/myrobi/.git'))
