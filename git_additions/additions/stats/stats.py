@@ -5,7 +5,7 @@ import os
 import pygit2
 from colorama import Fore, Style
 
-from git_additions.additions.__helpers import find_toplevel
+from git_additions.additions.__helpers import find_toplevel, commit_date
 
 
 class Stats(object):
@@ -22,19 +22,20 @@ class Stats(object):
 
     def stats(self, repo):
         previous_commit = None
-        for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL | pygit2.GIT_SORT_REVERSE):
+        for commit in repo.walk(repo.head.target, pygit2.GIT_SORT_TOPOLOGICAL):
             if previous_commit is not None:
                 diff = commit.tree.diff_to_tree(previous_commit.tree)
-                print('#%s%s' % (Fore.CYAN, commit.short_id), end='\t')
+                print('#%s%s' % (Fore.CYAN, commit.short_id), end=' ')
+                print('%s%s' % (Fore.LIGHTMAGENTA_EX, commit_date(commit)), end=' ')
                 print(
                     '%s%s%s <%s>%s' % (Fore.YELLOW, commit.author.name, Style.DIM, commit.author.email, Style.NORMAL),
-                    end='\t'
+                    end=' '
                 )
-                print('%sf: %s' % (Fore.BLUE, diff.stats.files_changed), end='\t')
-                print('%s+: %s' % (Fore.GREEN, diff.stats.insertions,), end='\t')
-                print('%s-: %s' % (Fore.RED, diff.stats.deletions,), end='\t')
+                print('%sf: %s' % (Fore.BLUE, diff.stats.files_changed), end=' ')
+                print('%s+: %s' % (Fore.GREEN, diff.stats.insertions,), end=' ')
+                print('%s-: %s' % (Fore.RED, diff.stats.deletions,), end=' ')
                 if self.__options.message:
-                    print('%s%s' % (Fore.LIGHTBLUE_EX, str(commit.message).strip()), end='\t')
+                    print('%s%s' % (Fore.LIGHTBLUE_EX, str(commit.message).split('\n')[0].strip()), end=' ')
                 print(Style.RESET_ALL)
             previous_commit = commit
 
