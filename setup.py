@@ -3,7 +3,6 @@ from codecs import open
 from os import path
 
 import setuptools
-from setuptools import setup
 
 
 def long_description():
@@ -22,11 +21,11 @@ def version():
     return '%s.%s' % (__version, __build)
 
 
-setup(
+setuptools.setup(
     version=version(),
     long_description=long_description(),
     install_requires=[
-        'pygit2', 'colorama', 'pathlib'
+        'pygit2', 'colorama'
     ],
     packages=setuptools.find_packages(),
     classifiers=[
@@ -38,10 +37,10 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'git-duration=git_additions.additions.duration:runner',
-            'git-logs=git_additions.additions.logs:runner',
-            'git-stats=git_additions.additions.stats:runner',
-            'git-users=git_additions.additions.users:runner',
+            'git-duration=git_additions.duration:runner',
+            'git-logs=git_additions.logs:runner',
+            'git-stats=git_additions.stats:runner',
+            'git-users=git_additions.users:runner',
         ],
     },
 )

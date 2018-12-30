@@ -2,9 +2,9 @@ import os
 
 from pygit2 import Repository, GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE
 
-from git_additions.additions.__helpers import duration, commit_date
-from git_additions.additions.exporter.csv_exporter import CSVExporter
-from git_additions.additions.logs.print_log import PrintLog
+from git_additions.__helpers import duration, commit_date
+from git_additions.exporter.csv_exporter import CSVExporter
+from git_additions.logs.print_log import PrintLog
 
 
 class Logs(object):

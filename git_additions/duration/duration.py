@@ -4,7 +4,7 @@ import os
 
 import pygit2
 
-from git_additions.additions.__helpers import duration, normalize_duration, find_toplevel
+from git_additions.__helpers import duration, normalize_duration, find_toplevel
 
 
 class Duration(object):

@@ -5,7 +5,7 @@ import os
 import pygit2
 from colorama import Fore, Style
 
-from git_additions.additions.__helpers import find_toplevel, commit_date
+from git_additions.__helpers import find_toplevel, commit_date
 
 
 class Stats(object):
